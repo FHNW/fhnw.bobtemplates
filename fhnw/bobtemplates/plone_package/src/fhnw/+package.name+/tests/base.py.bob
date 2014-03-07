@@ -10,6 +10,7 @@ from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
 from plone.testing import z2
 from plone.app import testing
 
+
 class PackageFixture(PloneTestCaseFixture):
 
     def setUpZope(self, app, configurationContext):
@@ -28,7 +29,6 @@ class PackageFixture(PloneTestCaseFixture):
         z2.uninstallProduct(app, 'fhnw.{{{package.name}}}')
 
 
-
 PTC_FIXTURE = PackageFixture()
 PTC_FUNCTIONAL_TESTING = testing.FunctionalTesting(
     bases=(PTC_FIXTURE,), name='PloneTestCase:Functional')
@@ -39,6 +39,7 @@ class TestCase(PloneTestCase):
 
     layer = PTC_FUNCTIONAL_TESTING
 
+
 class FunctionalTestCase(PloneTestCase):
 
     def getBrowser(self, loggedIn=True):
@@ -48,3 +49,5 @@ class FunctionalTestCase(PloneTestCase):
             browser.addHeader('Authorization', 'Basic %s:%s' %
                               (TEST_USER_NAME, TEST_USER_PASSWORD))
         return browser
+
+# EOF

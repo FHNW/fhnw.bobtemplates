@@ -9,24 +9,35 @@ from setuptools import find_packages
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
+name = 'fhnw.{{{package.name}}}'
+
+long_description = (
+    read('README.rst')
+    + '\n' +
+    read('CHANGES.rst')
+    + '\n' +
+    'Contributors\n'
+    '============\n'
+    + '\n' +
+    read('CONTRIBUTORS.txt'))
 
 setup(
-    name='{{{package.name}}}',
+    name=name,
     version='{{{package.version}}}.dev0',
     description='{{{package.description}}}',
-    long_description=read('README.rst') +
-                     read('HISTORY.rst') +
-                     read('LICENSE'),
+    long_description = long_description,
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
         "Framework :: Plone :: 4.3",
     ],
-    author='{{{author.name}}}',
-    author_email='{{{author.email}}}',
-    url='{{{package.url}}}',
+    author='FHNW',
+    author_email='weboffice@fhnw.ch',
+    url="http://websvn.fhnw.ch/eggs/" + name,
     license='BSD',
     packages=find_packages(),
+    keywords="FHNW Plone",
+    test_suite = "fhnw.socialmedia.tests",
     install_requires=[
         'setuptools',
     ],
@@ -41,6 +52,9 @@ setup(
         ],
     },
     entry_points="""
+     # -*- Entry points: -*-
+       [z3c.autoinclude.plugin]
+       target = plone
     """,
     include_package_data=True,
     zip_safe=False,
