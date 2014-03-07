@@ -2,7 +2,7 @@
     xmlns="http://namespaces.zope.org/browser"
     xmlns:zope="http://namespaces.zope.org/zope"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="fhnwsocialmedia">
+    i18n_domain="fhnw{{{package.name}}}">
 
 </configure>
 

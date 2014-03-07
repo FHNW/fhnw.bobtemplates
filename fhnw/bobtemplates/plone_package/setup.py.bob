@@ -37,7 +37,7 @@ setup(
     license='BSD',
     packages=find_packages(),
     keywords="FHNW Plone",
-    test_suite = "fhnw.socialmedia.tests",
+    test_suite = "fhnw.{{{package.name}}}.tests",
     install_requires=[
         'setuptools',
     ],
