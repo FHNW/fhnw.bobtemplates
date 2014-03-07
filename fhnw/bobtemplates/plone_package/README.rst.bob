@@ -1,0 +1,28 @@
+{{{package.description}}}
+
+INSTALL
+=======
+
+::
+
+    $ pip install {{{package.name}}}
+
+USAGE
+=====
+
+...
+
+DEVELOP
+=======
+
+::
+
+    $ git clone {{{package.repository}}} {{{package.name}}}
+    $ cd {{{package.name}}}
+    $ make
+
+RUNNING TESTS
+=============
+
+::
+    $ make test

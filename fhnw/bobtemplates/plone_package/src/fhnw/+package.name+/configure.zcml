@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="fhnwsocialmedia">
+
+  <five:registerPackage package="." />
+  <include file="profiles.zcml" />
+  <include package=".browser" />
+  
+  <i18n:registerTranslations directory="locales" />
+  
+  <include package="archetypes.schemaextender" />
+  <adapter
+      factory=".schema.ContentTypeExtender"
+      provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+      name="fhnw.socialmedia" />
+
+  <utility
+     component=".vocabulary.RecommendTypeDefaultsVocabularyFactory"
+     name="fhnw.socialmedia.vocabularies.RecommendTypeDefaults"
+     />
+
+  <browser:resourceDirectory
+     name="fhnw.socialmedia.socialshareprivacy.images"
+     directory="./socialshareprivacy/socialshareprivacy/images"
+     />
+
+  <browser:resource
+     name="fhnw.socialmedia.socialshareprivacy.min.js"
+     file="./socialshareprivacy/jquery.socialshareprivacy.min.js"
+     />
+
+</configure>

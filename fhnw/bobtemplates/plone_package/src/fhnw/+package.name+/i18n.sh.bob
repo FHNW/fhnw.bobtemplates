@@ -1,0 +1,6 @@
+#!/bin/sh
+i18ndude rebuild-pot --pot "locales/fhnw{{{package.name}}}" --create fhnw{{{package.name}}} .
+i18ndude sync --pot "locales/fhnw{{{package.name}}}.pot" \
+    "locales/de/LC_MESSAGES/fhnw{{{package.name}}}.po" \
+    "locales/en/LC_MESSAGES/fhnw{{{package.name}}}.po" \
+    "locales/fr/LC_MESSAGES/fhnw{{{package.name}}}.po"

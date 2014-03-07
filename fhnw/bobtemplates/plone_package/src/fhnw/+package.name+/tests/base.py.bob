@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+"""
+"""
+__docformat__ = 'reStructuredText'
+__author__ = 'Tom Gross <tom.gross@fhnw.ch>'
+
+
+from plone.app.testing.bbb import PloneTestCaseFixture, PloneTestCase
+from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
+from plone.testing import z2
+from plone.app import testing
+
+class PackageFixture(PloneTestCaseFixture):
+
+    def setUpZope(self, app, configurationContext):
+        super(PloneTestCaseFixture, self).setUpZope(app, configurationContext)
+        import fhnw.{{{package.name}}}
+        self.loadZCML(package=fhnw.{{{package.name}}})
+        z2.installProduct(app, 'fhnw.{{{package.name}}}')
+
+    def setUpPloneSite(self, portal):
+        super(PloneTestCaseFixture, self).setUpPloneSite(portal)
+        # install sunburst theme
+        testing.applyProfile(portal, 'fhnw.{{{package.name}}}:default')
+
+    def tearDownZope(self, app):
+        super(PloneTestCaseFixture, self).tearDownZope(app)
+        z2.uninstallProduct(app, 'fhnw.{{{package.name}}}')
+
+
+
+PTC_FIXTURE = PackageFixture()
+PTC_FUNCTIONAL_TESTING = testing.FunctionalTesting(
+    bases=(PTC_FIXTURE,), name='PloneTestCase:Functional')
+
+
+class TestCase(PloneTestCase):
+    """ Base class used for test cases """
+
+    layer = PTC_FUNCTIONAL_TESTING
+
+class FunctionalTestCase(PloneTestCase):
+
+    def getBrowser(self, loggedIn=True):
+        """ instantiate and return a testbrowser for convenience """
+        browser = z2.Browser()
+        if loggedIn:
+            browser.addHeader('Authorization', 'Basic %s:%s' %
+                              (TEST_USER_NAME, TEST_USER_PASSWORD))
+        return browser
