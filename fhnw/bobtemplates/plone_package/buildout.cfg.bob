@@ -1,0 +1,17 @@
+[buildout]
+extends =
+    https://raw.github.com/collective/buildout.plonetest/master/test-4.3.x.cfg
+package-name = fhnw.{{{package.name}}}
+package-extras = [test]
+parts +=
+    packages
+eggs +=
+    Pillow
+
+[versions]
+Pillow = 2.3.0
+
+[packages]
+recipe = collective.recipe.omelette
+eggs = ${instance:eggs} ${buildout:test-eggs}
+
