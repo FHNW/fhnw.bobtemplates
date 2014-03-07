@@ -6,7 +6,7 @@ Usage
 ::
 
     $ pip install mr.bob
-    $ mrbob https://github.com/iElectric/bobtemplates.ielectric/archive/master.zip#bobtemplates.ielectric-master/bobtemplates/ielectric/pyramid
+    $ mrbob https://github.com/FHNW/fhnw.bobtemplates/archive/master.zip#fhnw.bobtemplates-master/fhnw/bobtemplates/plone_package
 
 
 LIST OF TEMPLATES
