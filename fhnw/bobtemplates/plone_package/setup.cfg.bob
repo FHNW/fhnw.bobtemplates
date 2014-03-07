@@ -19,4 +19,4 @@ ignore = E123,E127,E121
 # E121 continuation line indentation is not a multiple of four
 
 [aliases]
-dev = develop easy_install {{{package.name}}}[test,development]
+dev = develop easy_install fhnw.{{{package.name}}}[test,development]

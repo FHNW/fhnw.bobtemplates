@@ -35,7 +35,8 @@ setup(
     author_email='weboffice@fhnw.ch',
     url="http://websvn.fhnw.ch/eggs/" + name,
     license='BSD',
-    packages=find_packages(),
+    packages=find_packages('src', exclude=['ez_setup']),
+    package_dir={'': 'src'},
     keywords="FHNW Plone",
     test_suite = "fhnw.{{{package.name}}}.tests",
     install_requires=[
@@ -43,12 +44,13 @@ setup(
     ],
     extras_require={
         'test': [
-            'plone.app.testing',
+#            'plone.app.testing',
             'flake8',
         ],
         'development': [
             'zest.releaser',
             'check-manifest',
+            'i18ndude',
         ],
     },
     entry_points="""
