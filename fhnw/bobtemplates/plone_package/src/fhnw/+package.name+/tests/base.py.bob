@@ -44,7 +44,7 @@ class FunctionalTestCase(PloneTestCase):
 
     def getBrowser(self, loggedIn=True):
         """ instantiate and return a testbrowser for convenience """
-        browser = z2.Browser()
+        browser = z2.Browser(self.layer['app'])
         if loggedIn:
             browser.addHeader('Authorization', 'Basic %s:%s' %
                               (TEST_USER_NAME, TEST_USER_PASSWORD))
