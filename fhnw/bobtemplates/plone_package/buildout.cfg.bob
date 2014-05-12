@@ -9,7 +9,9 @@ eggs +=
     Pillow
 
 [versions]
-Pillow = 2.3.0
+Pillow = 2.4.0
+setuptools = 3.6
+zc.buildout = 2.2.1
 
 [packages]
 recipe = collective.recipe.omelette
