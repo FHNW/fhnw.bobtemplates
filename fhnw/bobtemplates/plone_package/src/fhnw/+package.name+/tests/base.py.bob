@@ -31,7 +31,10 @@ class PackageFixture(PloneTestCaseFixture):
 
 PTC_FIXTURE = PackageFixture()
 PTC_FUNCTIONAL_TESTING = testing.FunctionalTesting(
-    bases=(PTC_FIXTURE,), name='PloneTestCase:Functional')
+    bases=(PTC_FIXTURE,), name='fhnw.{{{package.name}}}:Functional')
+PTC_ROBOT_TESTING = FunctionalTesting(
+    bases=(PTC_FIXTURE, z2.ZSERVER_FIXTURE),
+    name="fhnw.{{{package.name}}}:Robot")
 
 
 class TestCase(PloneTestCase):
