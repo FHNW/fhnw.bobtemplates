@@ -1,7 +1,14 @@
+==========================
+FHNW Development Templates
+==========================
+
+
 This is a collection of templates for FHNW Python development.
 
 Usage
 =====
+
+Requires Pyhthon 2.7.
 
 ::
 
@@ -9,7 +16,7 @@ Usage
     $ mrbob https://github.com/FHNW/fhnw.bobtemplates/archive/master.zip#fhnw.bobtemplates-master/fhnw/bobtemplates/plone_package fhnw.mypackage
 
 
-LIST OF TEMPLATES
+List of Templates
 =================
 
  - *plone_package*: A Plone product in the fhnw.-namespace. Contains default structure, i18n and  unit- and robottest boilerplate.
