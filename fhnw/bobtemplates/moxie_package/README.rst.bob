@@ -1,0 +1,28 @@
+==========================
+moxie-{{{package.module}}}
+==========================
+
+TBD [Write some description, usage, etc. documentation here]
+
+Moxie blueprint: ::
+
+  services:
+      {{{package.module}}}:
+          <XXX>Service:
+              providers:
+                  moxie_{{{package.module}}}.providers.<XXX>:
+                      url: 'http://fhnw.sv-group.ch/de.html'
+          KVService:
+              backend_uri: 'redis://localhost:6379/0'
+
+
+Celery configuration: ::
+
+  # List of modules to import when celery starts.
+  CELERY_IMPORTS = (..., "moxie_{{{package.module}}}.tasks")
+
+
+Import data ::
+
+  >>> from moxie_food.tasks import import_{{{package.module}}}
+  >>> import_{{{package.module}}}.delay()

@@ -1,0 +1,23 @@
+
+class {{{package.domainobj}}}(object):
+
+    name = ''
+
+    description = ''
+
+    # XXX add some properties there
+
+    def as_dict(self):
+        return {'name': self.name,
+                'description': self.description,
+               # XXX add additional assignments here
+               }
+
+    @staticmethod
+    def from_dict(values):
+        ob = {{{package.domainobj}}}()
+        ob.name = values['name']
+        ob.description = values['description']
+        # XXX add property assignments here
+
+        return ob
