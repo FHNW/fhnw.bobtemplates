@@ -20,3 +20,5 @@ List of Templates
 =================
 
  - *plone_package*: A Plone product in the fhnw.-namespace. Contains default structure, i18n and  unit- and robottest boilerplate.
+
+ - *moxie_package*: A moxie package. Contains default structure for creating a moxie blueprint.
