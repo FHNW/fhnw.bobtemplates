@@ -1,0 +1,44 @@
+import logging
+import requests
+from requests import RequestException
+from lxml import etree
+from datetime import datetime, date, time
+
+from moxie_{{{package.module}}}.domain import {{{package.domainobj}}}
+
+logger = logging.getLogger(__name__)
+
+
+class Default{{{package.module|capitalize}}}Provider(object):
+    """
+    """
+
+    ATTRIBUTION = {
+        'title': '{{{package.module|capitalize}}}Group',
+        'url': 'http://XXX'}
+
+    def __init__(self, url):
+        self.url = url
+
+    def import_data(self):
+        r = requests.get(self.url)
+        return iter(self._scrape_xml(r.text.encode('utf-8', 'ignore')))
+
+    def _scrape_xml(self, content):
+        parser = etree.HTMLParser(encoding='utf-8')
+        root = etree.fromstring(content, parser)
+
+        raise NotImplementedError
+        for offer in root.iterfind('.//div[@class="offer"]'):
+            obj = {{{package.domainobj}}}()
+            #obj.name = offer.find('.//div[@class="title"]').text.strip()
+            #description = offer.find('.//div[@class="trimmings"]')
+            #obj.description = ' '.join(etree.tostring(
+            #     description, method='text', encoding='utf-8').splitlines())
+            yield obj
+
+
+if __name__ == '__main__':
+   provider = FhnwSvGroupFoodProvider('http://localhost:8000/menuplan.html')
+   for x in provider.import_meals():
+      print(x.as_dict())

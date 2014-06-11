@@ -10,7 +10,7 @@ from moxie_{{{package.module}}}.domain import {{{package.domainobj}}}
 
 logger = logging.getLogger(__name__)
 
-KEY_MEAL = '{{{package.module}}}'
+KEY_DATA = '{{{package.module}}}'
 KEY_UPDATED = 'last_updated'
 
 
@@ -24,23 +24,23 @@ class FoodService(Service):
         self.provider = self._import_provider(providers.items()[0])
         self.service_key = service_key
 
-    def import_meals(self):
+    def import_data(self):
         """Import meal data from provider
         """
         data = self.provider.import_data()
         data = json.dumps([item.as_dict() for item in data])
-        kv_store.set(self._get_key(KEY_MEAL), data)
+        kv_store.set(self._get_key(KEY_DATA), data)
         self._set_last_updated()
 
-    def get_meals(self):
+    def get_data(self):
         """Get meal data from storage
         :return: Meal domain object
         """
-        data = kv_store.get(self._get_key(KEY_MEAL))
+        data = kv_store.get(self._get_key(KEY_DATA))
         if not data:
             return []
-        meals = json.loads(data)
-        return [Meal.from_dict(meal) for meal in meals]
+        jsondata = json.loads(data)
+        return [{{{package.domainobj}}}.from_dict(item) for item in jsondata]
 
     def get_attribution(self):
         """Returns a dictionary containing attribution data

@@ -1,9 +1,9 @@
 from flask import Blueprint
 
-from .views import {{{package.viewclass}}}
+from .views import {{{package.domainobj}}}View
 
 
 def create_blueprint(blueprint_name, conf):
     blueprint = Blueprint(blueprint_name, __name__, **conf)
-    blueprint.add_url_rule('/', view_func={{{package.viewclass}}}.as_view('{{{package.module}}}'))
+    blueprint.add_url_rule('/', view_func={{{package.domainobj}}}View.as_view('{{{package.module}}}'))
     return blueprint
